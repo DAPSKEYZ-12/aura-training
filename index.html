@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Digital Academia | Powered by D-Maths</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --accent: #7e57c2;
+            --accent-light: #f3e5f5;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --surface: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--surface); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+
+        /* --- HEADER --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 8%; background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .brand-logo { height: 48px; border-radius: 8px; }
+        .divider { width: 1.5px; height: 30px; background: #e2e8f0; }
+        .parent-logo { height:100px; filter: grayscale(1); opacity: 0.6; transition: var(--transition); }
+        .logo-container:hover .parent-logo { filter: grayscale(0); opacity: 1; }
+
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; 
+            letter-spacing: -0.2px; transition: var(--transition); position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; 
+            height: 2px; background: var(--accent); transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); padding: 5px; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 120px 8%;
+            background: radial-gradient(circle at top right, #f3e5f5 0%, #ffffff 50%),
+                        radial-gradient(circle at bottom left, #e8eaf6 0%, #ffffff 50%);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content { text-align: left; }
+
+        .hero h1 { 
+            font-size: clamp(2.5rem, 6vw, 4rem); color: var(--primary); 
+            margin-bottom: 1.5rem; line-height: 1.1; font-weight: 800; letter-spacing: -1.5px;
+        }
+        .hero p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem; font-weight: 400; }
+
+        .btn { 
+            padding: 16px 36px; border-radius: 12px; font-weight: 700; text-decoration: none; 
+            display: inline-block; transition: var(--transition); border: none; cursor: pointer;
+            letter-spacing: 0.2px;
+        }
+        .btn-main { background: var(--primary); color: white; box-shadow: 0 10px 20px rgba(26, 35, 126, 0.2); }
+        .btn-main:hover { 
+            background: var(--accent); transform: translateY(-3px); 
+            box-shadow: 0 15px 30px rgba(126, 87, 194, 0.3); 
+        }
+
+        /* --- PRICE TAG SIDEBAR --- */
+        .price-card {
+            background: white; border-radius: 28px; padding: 35px; 
+            border: 1px solid rgba(26, 35, 126, 0.1); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08); 
+            position: relative;
+            text-align: left;
+        }
+        .discount-badge {
+            position: absolute; top: -12px; right: 20px; 
+            background: #ff3d00; color: white; padding: 6px 15px; 
+            border-radius: 50px; font-size: 0.75rem; font-weight: 800;
+        }
+        .price-strikethrough { text-decoration: line-through; color: #94a3b8; font-size: 1.2rem; font-weight: 600; margin-right: 10px; }
+        .price-actual { font-size: 3rem; font-weight: 800; color: var(--primary); line-height: 1; }
+
+        /* --- SECTIONS --- */
+        .why-section { padding: 100px 8%; background: var(--bg-light); text-align: center; }
+        .section-title { font-size: 2.5rem; font-weight: 800; color: var(--primary); letter-spacing: -1px; margin-bottom: 1rem; }
+        
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; margin-top: 4rem; }
+        .why-card { 
+            background: white; padding: 3rem 2rem; border-radius: 24px; 
+            box-shadow: var(--shadow-sm); transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .why-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); border-color: var(--accent-light); }
+        .why-card i { 
+            font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem; 
+            background: var(--accent-light); width: 80px; height: 80px; 
+            line-height: 80px; border-radius: 20px; display: inline-block;
+        }
+        .why-card h3 { margin-bottom: 1rem; color: var(--primary); font-size: 1.3rem; font-weight: 700; }
+        .why-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .quote-box { 
+            margin-top: 6rem; padding: 4rem 2rem; background: var(--primary); 
+            color: white; border-radius: 32px; position: relative; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(26, 35, 126, 0.2);
+        }
+        .quote-box p { font-size: 1.6rem; font-style: italic; font-weight: 300; line-height: 1.4; max-width: 800px; margin: auto; position: relative; z-index: 1; }
+
+        .section { padding: 100px 8%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .card { 
+            padding: 4rem 2.5rem; border-radius: 28px; border: 1.5px solid #f1f5f9; 
+            text-align: center; transition: var(--transition); background: var(--surface);
+        }
+        .card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: scale(1.02); }
+        .card h3 { margin: 1.5rem 0 1rem; font-size: 1.5rem; color: var(--primary); }
+
+        /* --- CONTACT FORM --- */
+        .contact-container {
+            max-width: 650px; margin: 0 auto; background: white; 
+            padding: 50px; border-radius: 32px; box-shadow: var(--shadow-md);
+        }
+        .form-group { margin-bottom: 25px; text-align: left; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 10px; color: var(--primary); font-size: 0.85rem; text-transform: uppercase; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 16px 20px; border: 2px solid #f1f5f9; 
+            border-radius: 14px; font-size: 1rem; outline: none; transition: var(--transition);
+            background: #f8fafc;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); background: #ffffff; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            header { padding: 1rem 5%; }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-content { text-align: center; }
+            .nav-links { display: none; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: white; padding: 2rem; }
+            .menu-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="Aura.jpg" alt="Aura Logo" class="brand-logo">
+            <div class="divider"></div>
+            <img src="dmathslogo.png" alt="D-Maths Logo" class="parent-logo">
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#modules">Syllabus</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-right">
+                <h1>Elevate Your <br>Teaching Aura</h1>
+                <p>Transform your career with <b>Aura Digital Academia</b>. Master AI-driven pedagogy and data science under the expert guidance of <b>D-Maths</b>.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#contact" class="btn btn-main">Secure Your Seat <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+                    <a href="#modules" class="btn" style="background: white; border: 1px solid #ddd; color: var(--primary);">View Syllabus</a>
+                </div>
+            </div>
+
+            <div data-aos="fade-left" data-aos-delay="200">
+                <div class="price-card">
+                    <div class="discount-badge">25% OFF TODAY</div>
+                    <p style="color: var(--text-muted); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px;">Full Course Access</p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <span class="price-strikethrough">₦20,000</span>
+                        <div class="price-actual">₦15,000</div>
+                    </div>
+
+                    <ul style="list-style: none; margin-bottom: 25px; font-size: 0.9rem;">
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> 4 Specialized Modules</li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> AI Portfolio Website Setup</li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> Python Insight Templates</li>
+                        <li><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> 2026 Certification</li>
+                    </ul>
+
+                    <p style="font-size: 0.8rem; color: var(--accent); font-weight: 700; text-align: center; background: var(--accent-light); padding: 10px; border-radius: 12px;">
+                        <i class="fas fa-bolt" style="margin-right: 5px;"></i> Exclusive Pricing for Early Birds
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-section" id="why">
+        <h2 class="section-title" data-aos="fade-down">Why Join This Program?</h2>
+        <div class="why-grid">
+            <div class="why-card" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fas fa-magic"></i>
+                <h3>Zero Coding</h3>
+                <p>We focus on commanding technology, not programming it. Achieve high-level results without technical stress.</p>
+            </div>
+            <div class="why-card" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Flexible Tools</h3>
+                <p>Ideally use a Laptop, but we provide specialized workflows for phone-based management.</p>
+            </div>
+            <div class="why-card" data-aos="zoom-in" data-aos-delay="300">
+                <i class="fas fa-award"></i>
+                <h3>Global Competency</h3>
+                <p>Earn high-value skills in massive demand across top-tier international schools.</p>
+            </div>
+        </div>
+        <div class="quote-box" data-aos="fade-up">
+            <p>"The best teachers of 2026 won't be replaced by AI, but they will be replaced by teachers who know how to use AI."</p>
+        </div>
+    </section>
+
+    <section class="section" id="modules">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 4rem;">Program Modules</h2>
+        <div class="grid">
+            <div class="card" data-aos="fade-up">
+                <i class="fas fa-layer-group" style="font-size: 3rem; color: var(--accent);"></i>
+                <h3>Digital Architect</h3>
+                <p>Build professional portfolios using Canva and Google Sites.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-brain" style="font-size: 3rem; color: var(--accent);"></i>
+                <h3>AI Assistant</h3>
+                <p>Master Prompt Engineering for lesson plans and rubrics.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-bolt" style="font-size: 3rem; color: var(--accent);"></i>
+                <h3>Insight Engine</h3>
+                <p>Leverage Python-powered visual dashboards to track success.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact" style="background: var(--bg-light); text-align: center;">
+        <h2 class="section-title" style="margin-bottom: 2.5rem;" data-aos="fade-down">Register Now</h2>
+        <div class="contact-container" data-aos="fade-up">
+            <form name="submit-to-google-sheet">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="FullName" placeholder="e.g. Oladapo Emmanuel" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="Email" placeholder="e.g. emmanuel@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp Number (Optional)</label>
+                    <input type="text" name="WhatsApp" placeholder="e.g. 08012345678">
+                </div>
+                <button type="submit" class="btn btn-main" style="width: 100%;">Complete Registration</button>
+            </form>
+            <div id="success-msg" style="display:none; margin-top: 20px; color: #10b981; font-weight: 700;">
+                Awesome! Check your email for the WhatsApp link.
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 4rem 8%; background: var(--primary); color: white; text-align: center;">
+        <p>AURA DIGITAL ACADEMIA &copy; 2026. Powered by D-Maths Success Hack.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        // Logic to connect to your Google Script URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwtWJYhlRD0wv5oiy04NDhq8TTLMB2cv0yjHOb8vh5JzjOSFRHlouT8hcQSR-i87ZLpPQ/exec';
+        const form = document.forms['submit-to-google-sheet'];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            btn.innerHTML = "Processing...";
+            btn.disabled = true;
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    form.reset();
+                    btn.style.display = 'none';
+                    document.getElementById('success-msg').style.display = 'block';
+                })
+                .catch(error => {
+                    btn.innerHTML = "Try Again";
+                    btn.disabled = false;
+                    console.error('Error!', error.message);
+                });
+        });
+    </script>
+</body>
+</html>
