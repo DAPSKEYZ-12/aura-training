@@ -26,25 +26,61 @@
         body { background-color: var(--surface); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
         /* --- HEADER --- */
+       /* --- OPTIMIZED HEADER --- */
         header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.2rem 8%; background: rgba(255, 255, 255, 0.95);
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            /* Reduced padding for a slimmer profile */
+            padding: 0.7rem 8%; 
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
             transition: var(--transition);
         }
 
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .brand-logo { height: 48px; border-radius: 8px; }
-        .divider { width: 1.5px; height: 30px; background: #e2e8f0; }
-        .parent-logo { height:100px; filter: grayscale(1); opacity: 0.6; transition: var(--transition); }
-        .logo-container:hover .parent-logo { filter: grayscale(0); opacity: 1; }
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; /* Tighter gap */
+        }
 
-        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .brand-logo { 
+            height: 38px; /* Reduced from 48px */
+            border-radius: 6px; 
+        }
+
+        .divider { 
+            width: 1px; 
+            height: 24px; /* Shorter divider */
+            background: #e2e8f0; 
+        }
+
+        .parent-logo { 
+            height: 28px; /* Fixed syntax and reduced size */
+            filter: grayscale(1); 
+            opacity: 0.6; 
+            transition: var(--transition); 
+        }
+        
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+            gap: 2rem; /* Tighter gap between links */
+            align-items: center; 
+        }
+
         .nav-links a { 
-            text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; 
-            letter-spacing: -0.2px; transition: var(--transition); position: relative;
+            text-decoration: none; 
+            color: var(--text-main); 
+            font-weight: 500; /* Slightly lighter weight */
+            font-size: 0.85rem; /* Slightly smaller text */
+            letter-spacing: -0.1px; 
+            transition: var(--transition); 
+            position: relative;
         }
         .nav-links a::after {
             content: ''; position: absolute; bottom: -5px; left: 0; width: 0; 
@@ -187,7 +223,8 @@
         <div class="hero-container">
             <div class="hero-content" data-aos="fade-right">
                 <h1>Elevate Your <br>Teaching Aura</h1>
-                <p>Transform your career with <b>Aura Digital Academia</b>. Master AI-driven pedagogy and data science under the expert guidance of <b>D-Maths</b>.</p>
+                <p>Transform your career with <b>Aura Digital Academia</b>. Master AI-driven Teaching and Learning Aids|Creation of Self Designed CBT apps
+                    without formal knowledge of coding|Creation of a Professional Website Portfolio|Data Analysis For Classroom and Making Data Driven Decisions as Teachers|Building your brands as Teacher <i>under the guidance of </i><b>D-Maths</b>.</p>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <a href="#contact" class="btn btn-main">Secure Your Seat <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
                     <a href="#modules" class="btn" style="background: white; border: 1px solid #ddd; color: var(--primary);">View Syllabus</a>
@@ -205,9 +242,9 @@
                     </div>
 
                     <ul style="list-style: none; margin-bottom: 25px; font-size: 0.9rem;">
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> 4 Specialized Modules</li>
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> AI Portfolio Website Setup</li>
-                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> Python Insight Templates</li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> Creating a Self Designed Fullstack CBT app </li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> Creating a Fullstack Portfolio Website  </li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> Creating a brand as a Teacher </li>
                         <li><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i> 2026 Certification</li>
                     </ul>
 
@@ -325,4 +362,5 @@
         });
     </script>
 </body>
+
 </html>
