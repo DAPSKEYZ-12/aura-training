@@ -25,13 +25,11 @@
         html { scroll-behavior: smooth; }
         body { background-color: var(--surface); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
-        /* --- HEADER --- */
-       /* --- OPTIMIZED HEADER --- */
+        /* --- OPTIMIZED HEADER --- */
         header {
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            /* Reduced padding for a slimmer profile */
             padding: 0.7rem 8%; 
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -45,22 +43,22 @@
         .logo-container { 
             display: flex; 
             align-items: center; 
-            gap: 12px; /* Tighter gap */
+            gap: 12px;
         }
 
         .brand-logo { 
-            height: 38px; /* Reduced from 48px */
+            height: 38px; 
             border-radius: 6px; 
         }
 
         .divider { 
             width: 1px; 
-            height: 24px; /* Shorter divider */
+            height: 24px; 
             background: #e2e8f0; 
         }
 
         .parent-logo { 
-            height: 28px; /* Fixed syntax and reduced size */
+            height: 28px; 
             filter: grayscale(1); 
             opacity: 0.6; 
             transition: var(--transition); 
@@ -69,15 +67,15 @@
         .nav-links { 
             display: flex; 
             list-style: none; 
-            gap: 2rem; /* Tighter gap between links */
+            gap: 2rem; 
             align-items: center; 
         }
 
         .nav-links a { 
             text-decoration: none; 
             color: var(--text-main); 
-            font-weight: 500; /* Slightly lighter weight */
-            font-size: 0.85rem; /* Slightly smaller text */
+            font-weight: 500; 
+            font-size: 0.85rem; 
             letter-spacing: -0.1px; 
             transition: var(--transition); 
             position: relative;
@@ -93,7 +91,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            padding: 120px 8%;
+            padding: 100px 8%;
             background: radial-gradient(circle at top right, #f3e5f5 0%, #ffffff 50%),
                         radial-gradient(circle at bottom left, #e8eaf6 0%, #ffffff 50%);
         }
@@ -124,6 +122,26 @@
         .btn-main:hover { 
             background: var(--accent); transform: translateY(-3px); 
             box-shadow: 0 15px 30px rgba(126, 87, 194, 0.3); 
+        }
+
+        /* --- FLYER SECTION --- */
+        .flyer-section {
+            padding: 60px 8%;
+            background: #ffffff;
+            text-align: center;
+        }
+        .flyer-display {
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 8px solid #f1f5f9;
+        }
+        .flyer-display img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* --- PRICE TAG SIDEBAR --- */
@@ -212,6 +230,7 @@
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
+            <li><a href="#flyer">Flyer</a></li>
             <li><a href="#why">Why Us</a></li>
             <li><a href="#modules">Syllabus</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -223,8 +242,7 @@
         <div class="hero-container">
             <div class="hero-content" data-aos="fade-right">
                 <h1>Elevate Your <br>Teaching Aura</h1>
-                <p>Transform your career with <b>Aura Digital Academia</b>. Master AI-driven Teaching and Learning Aids|Creation of Self Designed CBT apps
-                    without formal knowledge of coding|Creation of a Professional Website Portfolio|Data Analysis For Classroom and Making Data Driven Decisions as Teachers|Building your brands as Teacher <i>under the guidance of </i><b>D-Maths</b>.</p>
+                <p>Transform your career with <b>Aura Digital Academia</b>. Master AI-driven Teaching and Learning Aids | Creation of Self Designed CBT apps without formal knowledge of coding | Creation of a Professional Website Portfolio | Data Analysis For Classroom and Making Data Driven Decisions as Teachers | Building your brands as Teacher <i>under the guidance of </i><b>D-Maths</b>.</p>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <a href="#contact" class="btn btn-main">Secure Your Seat <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
                     <a href="#modules" class="btn" style="background: white; border: 1px solid #ddd; color: var(--primary);">View Syllabus</a>
@@ -253,6 +271,13 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="flyer-section" id="flyer">
+        <h2 class="section-title" data-aos="fade-down">Program Highlights</h2>
+        <div class="flyer-display" data-aos="zoom-in">
+            <img src="26039.jpg" alt="Aura Digital Academia Flyer">
         </div>
     </section>
 
@@ -291,7 +316,7 @@
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <i class="fas fa-brain" style="font-size: 3rem; color: var(--accent);"></i>
                 <h3>AI Assistant</h3>
-                <p>Master Prompt Engineering for lesson plans  .</p>
+                <p>Master Prompt Engineering for lesson plans.</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-bolt" style="font-size: 3rem; color: var(--accent);"></i>
@@ -300,8 +325,8 @@
             </div>
              <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-bolt" style="font-size: 3rem; color: var(--accent);"></i>
-                <h3>Full-Stack Self CBT Website to aid Learning </h3>
-                <p>Create Full Stack CBT websites with free hosting to improve Digital Teaching and aid online teaching</p>
+                <h3>Full-Stack Self CBT Website</h3>
+                <p>Create Full Stack CBT websites with free hosting to improve Digital Teaching and aid online teaching.</p>
             </div>
         </div>
     </section>
@@ -343,7 +368,6 @@
             nav.classList.toggle('active');
         }
 
-        // Logic to connect to your Google Script URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwtWJYhlRD0wv5oiy04NDhq8TTLMB2cv0yjHOb8vh5JzjOSFRHlouT8hcQSR-i87ZLpPQ/exec';
         const form = document.forms['submit-to-google-sheet'];
 
@@ -367,6 +391,5 @@
         });
     </script>
 </body>
-
-</html>
-
+        </html>
+    
